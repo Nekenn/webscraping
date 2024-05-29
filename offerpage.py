@@ -27,13 +27,13 @@ for entry in json_data:
             #upc, price, availability, title, reviews
             i+=1
             htmlstr = response.text
-            listing=open('offerpage.html','w')
-            listing.write(htmlstr)
             html = BeautifulSoup(htmlstr, 'lxml')
 
-            title = TitleExtractor(html)
             print('-------------- ',i,' --------------')
+            title = TitleExtractor(html)
             print('title: ',title.extractTitle())
+
+            print(url)
 
             sku = SkuExtractor(html)
             print('sku: ', sku.extractData())
@@ -46,14 +46,4 @@ for entry in json_data:
 
             availability = AvailabilityExtractor(html).extractData()
             print('availability: ',availability)
-
-
-
-
-           
-
-           
-            
-
-    
-    
+            print()

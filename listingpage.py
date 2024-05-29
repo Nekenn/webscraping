@@ -1,13 +1,12 @@
 from connexion import *
 from bs4 import BeautifulSoup
 import csv
-scraping = Scraping("https://allo.ua/ua/rjukzaki-i-sumki/konstrukcija_rjukzaki_sumki-otdelenie_dlja_noutbuka/naznachenie_rjukzaki_sumki-gorodskoj/proizvoditel-xiaomi/")
+scraping = Scraping("https://allo.ua/ua/zaschitnye-plenki-k-planshetam/")
 
 response = scraping.getReponse()
 print(response.status_code)
 htmlstr = response.text
-listing=open('listingpage.html','w')
-listing.write(htmlstr)
+
 html = BeautifulSoup(htmlstr, 'lxml')
 
 elements = html.select(".product-card__content > a")
